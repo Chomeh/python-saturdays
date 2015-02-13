@@ -6,7 +6,7 @@ import select
 MAX_CONNECTIONS = 20
 
 serverSocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-serverSocket.bind(('localhost', 8089))
+serverSocket.bind(('10.1.1.37', 8089))
 serverSocket.listen(MAX_CONNECTIONS)
 serverSocket.setblocking(0) #set to non-blocking mode
 
@@ -42,6 +42,7 @@ while True:
             if len(messageBytes) == 0:
                 continue
             message = host + " >> " + messageBytes.decode('UTF-8')
+            print(message)
         except ConnectionError:
             print(host + " disconnected")
             clientSockets.remove(clientSocket)
@@ -50,8 +51,6 @@ while True:
             print("Error with socket from " + host + ": " + str(e))
             clientSockets.remove(clientSocket)
             continue #problem reading message, skip relay
-
-        print(message)
 
         #relay message to all writable sockets
         for relaySocket in clientSockets:
