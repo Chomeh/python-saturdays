@@ -5,14 +5,17 @@ from kivy.clock import Clock
 
 # A very simple animation example
 
+#Create widget object
+widget = Widget()
+
+#Program variables
 diameter=30
 x=100.
 y=100.
 
+#Create drawing objects and add to the widget's canvas
 color = Color(1,0,0)
 ellipse = Ellipse(size=(diameter, diameter))
-
-widget = Widget()
 widget.canvas.add(color)
 widget.canvas.add(ellipse)
 
