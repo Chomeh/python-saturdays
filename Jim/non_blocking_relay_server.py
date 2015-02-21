@@ -3,10 +3,10 @@
 import socket
 import select
 
-MAX_CONNECTIONS = 20
 
+MAX_CONNECTIONS = 20
 serverSocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-serverSocket.bind(('10.1.1.37', 8089))
+serverSocket.bind(("", 8089)) #allow connections from anywhere
 serverSocket.listen(MAX_CONNECTIONS)
 serverSocket.setblocking(0) #set to non-blocking mode
 
